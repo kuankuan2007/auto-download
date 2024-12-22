@@ -1,0 +1,9 @@
+.venv/
+venv/
+__pycache__/
+/temp/
+/test.py
+/build/
+/dist/
+/image/
+/autoDownload.egg-info/

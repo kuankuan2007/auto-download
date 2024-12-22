@@ -1,0 +1,11 @@
+{
+  "esbonio.sphinx.confDir": "",
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.exclude": [
+    "**/lib/site-packages/",
+    "**/typeshed-fallback/stdlib/builtins.pyi",
+    "**/Python312/Lib/",
+    "**/Python311/Lib/"
+  ],
+  "pylint.args": ["--disable=C,W0614,W0401,E0611,W0718,W0719,R,E1101,W0212,W1201,W1203,W0603,W0622"]
+}
