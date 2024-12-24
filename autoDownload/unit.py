@@ -50,7 +50,7 @@ class Unit(object):
 
     async def asyncRequest(
         self, taskConfig: download.TaskConfig
-    ) -> typing.Awaitable[download.TaskResult]:
+    ) -> typing.Awaitable[None]:
         event = asyncio.Event()
         result: download.TaskResult | None = None
 
@@ -60,9 +60,13 @@ class Unit(object):
             result = res
 
         self.callbackRequest(taskConfig, callback)
+        
         await event.wait()
+        
         assert result is not None
-        return result
+        if result.ok:
+            return
+        raise result.err or RuntimeError("The download task was failed.")
 
     def callbackRequest(
         self,
