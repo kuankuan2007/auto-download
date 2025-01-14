@@ -3,7 +3,7 @@ import rich.console as _console
 import json
 import urllib
 import pathlib
-from . import TaskConfig, unit, pools
+from . import TaskConfig, unit, pools, __version__
 import time
 from .console import DownloadProgress
 
@@ -11,12 +11,12 @@ from .console import DownloadProgress
 def main():
     """
     Main function to handle the download process using command-line arguments.
-    
-    Parses command-line arguments for the URL of the file to download, the file 
-    path to save the download, the maximum number of download threads, the 
-    maximum number of retry attempts, and the request headers. Validates and 
-    processes these inputs, initiates the download using a multi-threaded 
-    approach, and provides a progress display. Handles errors and exceptions 
+
+    Parses command-line arguments for the URL of the file to download, the file
+    path to save the download, the maximum number of download threads, the
+    maximum number of retry attempts, and the request headers. Validates and
+    processes these inputs, initiates the download using a multi-threaded
+    approach, and provides a progress display. Handles errors and exceptions
     during the download process and outputs the result to the console.
     """
 
@@ -44,6 +44,9 @@ def main():
     )
     argparser.add_argument(
         "-H", "--header", type=str, default="{}", help="Header of the requests"
+    )
+    argparser.add_argument(
+        "-v", "--version", action="version", version=f"autoDownload {__version__}"
     )
     args = argparser.parse_args()
     headers: dict
