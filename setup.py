@@ -11,7 +11,7 @@ setup(
     author="kuankuan",
     author_email="2163826131@qq.com",
     url="https://github.com/auto-download/",
-    install_requires=["requests", "rich", "exceptiongroup"],
+    install_requires=["requests", "rich", "exceptiongroup", "Deprecated"],
     packages=["autoDownload"],
     license="Mulan PSL v2",
     platforms=["windows", "linux", "macos"],
@@ -29,7 +29,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "auto-download = autoDownload.console:terminal",
+            "auto-download = autoDownload.__main__:main",
         ],
     },
 )
