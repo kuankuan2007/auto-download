@@ -1,9 +1,9 @@
 from setuptools import setup
-
+import autoDownload
 
 setup(
     name="autoDownload",
-    version="0.1.1",
+    version=autoDownload.__version__,
     keywords=["requests", "download", "http", "thread"],
     description="A simple, efficient, general-purpose Python multithreaded download library",
     long_description=open("README.md", "r", encoding="utf-8").read(),

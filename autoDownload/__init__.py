@@ -38,3 +38,5 @@ __all__ = [
     "TaskConfig",
     "TaskResult",
 ]
+
+__version__ = "0.1.1"
