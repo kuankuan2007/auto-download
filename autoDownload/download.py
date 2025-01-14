@@ -5,7 +5,11 @@ from . import pools, adapters, progress, tempdir
 import io
 import math
 import threading
-from exceptiongroup import ExceptionGroup
+
+try:
+    ExceptionGroup  # pyright: ignore
+except Exception:
+    from exceptiongroup import ExceptionGroup  # pylint: disable=redefined-builtin
 
 _nowTaskIndexLock = threading.Lock()
 _nowTaskIndex = 0
@@ -328,7 +332,7 @@ class Task:
     _tempDir: tempdir.TempDirBase
 
     def __init__(self, taskConfig: TaskConfig):
-        global _nowTaskIndex
+        global _nowTaskIndex  # pylint: disable=global-statement
         self.config = taskConfig
         self._tryResult = taskConfig.tryResult
         if taskConfig.tryResult:
@@ -526,9 +530,7 @@ class Task:
             with open(self.config.file, "wb") as saveFile:
                 redundant = 0
                 for i in listPart:
-                    with open(
-                        self.getSavePath(str(i.identity)), "rb"
-                    ) as f:
+                    with open(self.getSavePath(str(i.identity)), "rb") as f:
                         f.seek(0, redundant)
                         total = redundant
                         redundant = 0
