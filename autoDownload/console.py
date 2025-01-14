@@ -145,14 +145,14 @@ class DownloadProgress(_progress.Progress):
 
 @deprecated(
     reason="Use `DownloadProgress` instead",
-    version="1.1.2",
+    version="0.1.2",
 )
 def terminal():
     """
     [Deprecated] A shortcut to use the `DownloadProgress` in command line interface.
 
     .. warning::
-        This function is deprecated since version 1.1.2 and will be removed in version 2.0.0.
+        This function is deprecated since version 0.1.2 and will be removed in the future versions
         Use `DownloadProgress` instead.
 
     Returns:
